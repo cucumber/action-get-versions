@@ -2,7 +2,7 @@
 
 next_version_heading=$(changelog latest --filename $2/CHANGELOG.md)
 next_version=${next_version_heading/v}
-next_version=$([[ $next_version = There* ]] && echo "" || echo $next_version)
+next_version=$([[ "$next_version" == There* ]] && echo "" || echo $next_version)
 echo "::set-output name=changelog-latest-version::$next_version"
 
 git fetch --tags
