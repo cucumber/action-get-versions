@@ -1,0 +1,27 @@
+name: "Versions"
+author: "Matt Wynne"
+description: "Read version numbers from git tags and CHANGELOG to see if a release is needed"
+
+inputs:
+  tag-prefix:
+    description: "A prefix to use when searching for tags, e.g. `cucumber-expressions/`"
+    default: ""
+
+  changelog-directory:
+    description: "Path within the repo to look for the CHANGELOG.md file"
+    default: "."
+
+outputs:
+  released-version:
+    description: The current released version parsed from the latest git tag
+  changelog-latest-version:
+    description: The next version parsed from the top heading in the CHANGELOG file
+  is-release-required:
+    description: Set to true of the changelog version is newer than the latest git tag
+
+runs:
+  using: "docker"
+  image: Dockerfile
+  args:
+    - ${{ inputs.tag-prefix }}
+    - ${{ inputs.changelog-directory }}
