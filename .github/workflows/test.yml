@@ -32,7 +32,6 @@ jobs:
         id: versions
       - name: Assert values
         run: |
-          git tag -l
           [ "${{ steps.versions.outputs.released-version }}" == "0.0.0" ]
           [ "${{ steps.versions.outputs.changelog-latest-version }}" == "1.0.0" ]
           [ "${{ steps.versions.outputs.is-release-required }}" == "true" ]
@@ -68,7 +67,6 @@ jobs:
         id: versions
       - name: Assert values
         run: |
-          git tag -l
           [ !"${{ steps.versions.outputs.is-release-required }}" ]
 
   test-tag-prefix:
@@ -105,7 +103,6 @@ jobs:
           tag-prefix: 'ruby/'
       - name: Assert value
         run: |
-          git tag -l
           [ "${{ steps.versions.outputs.released-version }}" == "1.0.0" ]
 
   test-changelog-folder:
@@ -145,5 +142,35 @@ jobs:
           changelog-directory: 'ruby'
       - name: Assert values
         run: |
-          git tag -l
           [ "${{ steps.versions.outputs.changelog-latest-version }}" == "1.0.0" ]
+
+  test-flags-release-required-when-not-released-yet:
+    runs-on: ubuntu-latest
+    name: It sets is-release-required if there is no version tag and the CHANGELOG shows a version
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up git config
+        run: |
+          git config --global user.email "github-actions@example.com"
+          git config --global user.name "GitHub Actions"
+      - run: touch CHANGELOG.md
+      - name: Create a simple changelog file
+        uses: cucumber-actions/changelog-action@v1.3
+        with:
+          args: init --output CHANGELOG.md --compare-url https://example.com/abcdef...HEAD
+      - name: Run changelog release
+        uses: cucumber-actions/changelog-action@v1.3
+        with:
+          args: release --output CHANGELOG.md 1.0.0
+      - name: Commit release
+        run: |
+          git commit -am "Release v1.0.0"
+      - name: Test the action
+        uses: ./
+        id: versions
+      - name: Assert values
+        run: |
+          [ "${{ steps.versions.outputs.released-version }}" == "" ]
+          [ "${{ steps.versions.outputs.changelog-latest-version }}" == "1.0.0" ]
+          [ "${{ steps.versions.outputs.is-release-required }}" == "true" ]
