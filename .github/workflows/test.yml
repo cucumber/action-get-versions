@@ -32,7 +32,10 @@ jobs:
         id: versions
       - name: Assert values
         run: |
-          git tag -l
+          git clone https://github.com/torokmark/assert.sh.git; cd assert.sh
+          source assert.sh
+          cd ..
+          assert_eq "0.0.0" "${{ steps.versions.outputs.released-version }}"
           [ "${{ steps.versions.outputs.released-version }}" == "0.0.0" ]
           [ "${{ steps.versions.outputs.changelog-latest-version }}" == "1.0.0" ]
           [ "${{ steps.versions.outputs.is-release-required }}" == "true" ]
