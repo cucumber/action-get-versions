@@ -200,4 +200,4 @@ jobs:
         run: |
           [ "${{ steps.versions.outputs.released-version }}" == "" ]
           [ "${{ steps.versions.outputs.changelog-latest-version }}" == "" ]
-          [ "${{ steps.versions.outputs.is-release-required }}" == "false" ]
+          [ "${{ steps.versions.outputs.is-release-required }}" == "" ]
