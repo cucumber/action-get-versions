@@ -24,7 +24,7 @@ jobs:
         uses: cucumber-actions/changelog-action@v1.3
         with:
           args: release --output CHANGELOG.md 1.0.0
-      - name: Commit and add a tag
+      - name: Commit release
         run: |
           git commit -am "Release v1.0.0"
       - name: Test the action
@@ -32,6 +32,7 @@ jobs:
         id: versions
       - name: Assert values
         run: |
-          [ ${{ steps.version.outputs.released-version }} == "0.0.0" ]
-          [ ${{ steps.version.outputs.changelog-latest-version }} == "1.0.0" ]
-          [ ${{ steps.version.outputs.is-release-required }} == "true" ]
+          git tag -l
+          [ ${{ "steps.version.outputs.released-version" }} == "0.0.0" ]
+          [ ${{ "steps.version.outputs.changelog-latest-version" }} == "1.0.0" ]
+          [ ${{ "steps.version.outputs.is-release-required" }} == "true" ]
