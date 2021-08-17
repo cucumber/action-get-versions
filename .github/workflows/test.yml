@@ -1,9 +1,9 @@
 on: [push]
 
 jobs:
-  test-different-versions:
+  setup:
     runs-on: ubuntu-latest
-    name: Test reading versions
+    name: Setup
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -11,6 +11,12 @@ jobs:
         run: |
           git config --global user.email "github-actions@example.com"
           git config --global user.name "GitHub Actions"
+    
+  test-different-versions:
+    runs-on: ubuntu-latest
+    name: It reads versions from normal git tags and CHANGELOG
+    needs: setup
+    steps:
       - run: touch CHANGELOG.md
       - name: Create a simple changelog file
         uses: cucumber-actions/changelog-action@v1.3
@@ -40,13 +46,8 @@ jobs:
   test-same-version:
     runs-on: ubuntu-latest
     name: is-release-required should be false when versions are the same
+    needs: setup
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Set up git config
-        run: |
-          git config --global user.email "github-actions@example.com"
-          git config --global user.name "GitHub Actions"
       - run: touch CHANGELOG.md
       - name: Create a simple changelog file
         uses: cucumber-actions/changelog-action@v1.3
