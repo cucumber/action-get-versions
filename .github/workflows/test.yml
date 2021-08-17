@@ -33,6 +33,6 @@ jobs:
       - name: Assert values
         run: |
           git tag -l
-          [ ${{ "steps.version.outputs.released-version" }} == "0.0.0" ]
-          [ ${{ "steps.version.outputs.changelog-latest-version" }} == "1.0.0" ]
-          [ ${{ "steps.version.outputs.is-release-required" }} == "true" ]
+          [ "${{ steps.version.outputs.released-version }}" == "0.0.0" ]
+          [ "${{ steps.version.outputs.changelog-latest-version }}" == "1.0.0" ]
+          [ "${{ steps.version.outputs.is-release-required" }}" == "true" ]
