@@ -1,6 +1,6 @@
 #!/bin/sh
 
-next_version_heading=$(changelog latest)
+next_version_heading=$(changelog latest --filename $2/CHANGELOG.md)
 next_version=${next_version_heading/v}
 echo "::set-output name=changelog-latest-version::$next_version"
 
