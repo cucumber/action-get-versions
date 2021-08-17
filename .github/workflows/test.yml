@@ -174,3 +174,30 @@ jobs:
           [ "${{ steps.versions.outputs.released-version }}" == "" ]
           [ "${{ steps.versions.outputs.changelog-latest-version }}" == "1.0.0" ]
           [ "${{ steps.versions.outputs.is-release-required }}" == "true" ]
+
+  test-flags-release-not-required-when-not-ready-to-release:
+    runs-on: ubuntu-latest
+    name: It does not set is-release-required if there is no version tag and no CHANGELOG version
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up git config
+        run: |
+          git config --global user.email "github-actions@example.com"
+          git config --global user.name "GitHub Actions"
+      - run: touch CHANGELOG.md
+      - name: Create a simple changelog file
+        uses: cucumber-actions/changelog-action@v1.3
+        with:
+          args: init --output CHANGELOG.md --compare-url https://example.com/abcdef...HEAD
+      - name: Commit release
+        run: |
+          git commit -am "Add changelog"
+      - name: Test the action
+        uses: ./
+        id: versions
+      - name: Assert values
+        run: |
+          [ "${{ steps.versions.outputs.released-version }}" == "" ]
+          [ "${{ steps.versions.outputs.changelog-latest-version }}" == "" ]
+          [ "${{ steps.versions.outputs.is-release-required }}" == "false" ]
