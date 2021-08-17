@@ -108,7 +108,6 @@ jobs:
           git tag -l
           [ "${{ steps.versions.outputs.released-version }}" == "1.0.0" ]
 
-
   test-changelog-folder:
     runs-on: ubuntu-latest
     name: It reads the version from a CHANGELOG in a folder
@@ -128,7 +127,8 @@ jobs:
           args: init --filename ruby/CHANGELOG.md --output ruby/CHANGELOG.md --compare-url https://example.com/abcdef...HEAD
       - name: Create an initial commit
         run: |
-          git commit -am "Add a changelog"
+          git add .
+          git commit -m "Add a changelog"
       - name: Run changelog release
         uses: cucumber-actions/changelog-action@v1.3
         with:
