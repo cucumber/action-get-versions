@@ -5,7 +5,7 @@ next_version=${next_version_heading/v}
 echo "::set-output name=changelog-latest-version::$next_version"
 
 git fetch --tags
-current_version_label=$(git describe --tags $(git rev-list --tags --max-count=1))
+current_version_label=$(git describe --match "$1*" --abbrev=0)
 current_version=${current_version_label/v/}
 echo "::set-output name=released-version::$current_version"
 
