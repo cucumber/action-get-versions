@@ -129,14 +129,15 @@ jobs:
         run: |
           git add .
           git commit -m "Add a changelog"
+          git tag v0.0.0
       - name: Run changelog release
         uses: cucumber-actions/changelog-action@v1.3
         with:
           args: release --filename ruby/CHANGELOG.md --output ruby/CHANGELOG.md 1.0.0
       - name: Commit release
         run: |
-          git commit -am "Release v1.0.0"
-          git tag ruby/v1.0.0
+          git add .
+          git commit -m "Release v1.0.0"
       - name: Test the action
         uses: ./
         id: versions
