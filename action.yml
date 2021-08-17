@@ -23,4 +23,5 @@ runs:
   using: "docker"
   image: Dockerfile
   args:
-    - ${{ inputs.args }}
+    - ${{ inputs.tag-prefix }}
+    - ${{ inputs.changelog-directory }}
