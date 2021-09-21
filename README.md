@@ -4,7 +4,7 @@ This action was developed by the Cucumber team to use as part of our automated r
 
 It reads version numbers from two places:
 
-1) A git tag
+1) The latest git tag
 2) The first heading in the `CHANGELOG.md` file
 
 We use these to infer:
