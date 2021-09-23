@@ -1,4 +1,4 @@
-[![.github/workflows/test.yml](https://github.com/cucumber-actions/versions/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/cucumber-actions/versions/actions/workflows/test.yml)
+[![.github/workflows/test.yml](https://github.com/cucumber/action-get-versions/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/cucumber/action-get-versions/actions/workflows/test.yml)
 
 # versions
 
