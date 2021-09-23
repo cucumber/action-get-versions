@@ -12,5 +12,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Read version from git latest git tag and CHANGELOG
 - Handle tag prefix / changelog directory
 
-[Unreleased]: https://github.com/cucumber-actions/versions/1.0.0...HEAD
-[1.0.0]: https://github.com/cucumber-actions/versions/bc0fc832d21a6388657c9c314bfaadba99df5bd5...1.0.0
+[Unreleased]: https://github.com/cucumber/action-get-versions/1.0.0...HEAD
+[1.0.0]: https://github.com/cucumber/action-get-versions/bc0fc832d21a6388657c9c314bfaadba99df5bd5...1.0.0

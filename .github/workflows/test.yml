@@ -13,7 +13,7 @@ jobs:
           git config --global user.name "GitHub Actions"
       - run: touch CHANGELOG.md
       - name: Create a simple changelog file
-        uses: cucumber-actions/changelog-action@v1.3
+        uses: cucumber/action-changelog@v1.3
         with:
           args: init --output CHANGELOG.md --compare-url https://example.com/abcdef...HEAD
       - name: Create an initial commit
@@ -21,7 +21,7 @@ jobs:
           git commit -am "Add a changelog"
           git tag v0.0.0
       - name: Run changelog release
-        uses: cucumber-actions/changelog-action@v1.3
+        uses: cucumber/action-changelog@v1.3
         with:
           args: release --output CHANGELOG.md 1.0.0
       - name: Commit release
@@ -48,14 +48,14 @@ jobs:
           git config --global user.name "GitHub Actions"
       - run: touch CHANGELOG.md
       - name: Create a simple changelog file
-        uses: cucumber-actions/changelog-action@v1.3
+        uses: cucumber/action-changelog@v1.3
         with:
           args: init --output CHANGELOG.md --compare-url https://example.com/abcdef...HEAD
       - name: Create an initial commit
         run: |
           git commit -am "Add a changelog"
       - name: Run changelog release
-        uses: cucumber-actions/changelog-action@v1.3
+        uses: cucumber/action-changelog@v1.3
         with:
           args: release --output CHANGELOG.md 1.0.0
       - name: Commit release
@@ -82,14 +82,14 @@ jobs:
       - run: |
           touch CHANGELOG.md
       - name: Create a simple changelog file
-        uses: cucumber-actions/changelog-action@v1.3
+        uses: cucumber/action-changelog@v1.3
         with:
           args: init --output CHANGELOG.md --compare-url https://example.com/abcdef...HEAD
       - name: Create an initial commit
         run: |
           git commit -am "Add a changelog"
       - name: Run changelog release
-        uses: cucumber-actions/changelog-action@v1.3
+        uses: cucumber/action-changelog@v1.3
         with:
           args: release --output CHANGELOG.md 1.0.0
       - name: Commit release
@@ -119,7 +119,7 @@ jobs:
           mkdir ruby
           touch ruby/CHANGELOG.md
       - name: Create a simple changelog file
-        uses: cucumber-actions/changelog-action@v1.3
+        uses: cucumber/action-changelog@v1.3
         with:
           args: init --filename ruby/CHANGELOG.md --output ruby/CHANGELOG.md --compare-url https://example.com/abcdef...HEAD
       - name: Create an initial commit
@@ -128,7 +128,7 @@ jobs:
           git commit -m "Add a changelog"
           git tag v0.0.0
       - name: Run changelog release
-        uses: cucumber-actions/changelog-action@v1.3
+        uses: cucumber/action-changelog@v1.3
         with:
           args: release --filename ruby/CHANGELOG.md --output ruby/CHANGELOG.md 1.0.0
       - name: Commit release
@@ -156,11 +156,11 @@ jobs:
           git config --global user.name "GitHub Actions"
       - run: touch CHANGELOG.md
       - name: Create a simple changelog file
-        uses: cucumber-actions/changelog-action@v1.3
+        uses: cucumber/action-changelog@v1.3
         with:
           args: init --output CHANGELOG.md --compare-url https://example.com/abcdef...HEAD
       - name: Run changelog release
-        uses: cucumber-actions/changelog-action@v1.3
+        uses: cucumber/action-changelog@v1.3
         with:
           args: release --output CHANGELOG.md 1.0.0
       - name: Commit release
@@ -187,7 +187,7 @@ jobs:
           git config --global user.name "GitHub Actions"
       - run: touch CHANGELOG.md
       - name: Create a simple changelog file
-        uses: cucumber-actions/changelog-action@v1.3
+        uses: cucumber/action-changelog@v1.3
         with:
           args: init --output CHANGELOG.md --compare-url https://example.com/abcdef...HEAD
       - name: Commit release
