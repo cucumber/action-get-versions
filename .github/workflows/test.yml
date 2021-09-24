@@ -201,3 +201,19 @@ jobs:
           [ "${{ steps.versions.outputs.released-version }}" == "" ]
           [ "${{ steps.versions.outputs.changelog-latest-version }}" == "" ]
           [ "${{ steps.versions.outputs.is-release-required }}" == "" ]
+
+  test-allows-next-step-to-git-tag:
+    runs-on: ubuntu-latest
+    name: It allows the next step to create a git tag by not locking .git files
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up git config
+        run: |
+          git config --global user.email "github-actions@example.com"
+          git config --global user.name "GitHub Actions"
+      - name: Test the action
+        uses: ./
+      - name: Create a tag
+        run: |
+          git tag this-should-work
