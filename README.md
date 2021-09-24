@@ -1,6 +1,6 @@
 [![.github/workflows/test.yml](https://github.com/cucumber/action-get-versions/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/cucumber/action-get-versions/actions/workflows/test.yml)
 
-# versions
+# get-versions
 
 This action was developed by the Cucumber team to use as part of our automated release process.
 
