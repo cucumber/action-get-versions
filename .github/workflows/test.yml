@@ -6,7 +6,7 @@ jobs:
     name: It reads current and next versions
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up git config
         run: |
           git config --global user.email "github-actions@example.com"
@@ -41,7 +41,7 @@ jobs:
     name: is-release-required should be false when versions are the same
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up git config
         run: |
           git config --global user.email "github-actions@example.com"
@@ -74,7 +74,7 @@ jobs:
     name: It reads the version from a prefixed tag
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up git config
         run: |
           git config --global user.email "github-actions@example.com"
@@ -110,7 +110,7 @@ jobs:
     name: It reads the version from a CHANGELOG in a folder
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up git config
         run: |
           git config --global user.email "github-actions@example.com"
@@ -149,7 +149,7 @@ jobs:
     name: It sets is-release-required if there is no version tag and the CHANGELOG shows a version
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up git config
         run: |
           git config --global user.email "github-actions@example.com"
@@ -180,7 +180,7 @@ jobs:
     name: It does not set is-release-required if there is no version tag and no CHANGELOG version
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up git config
         run: |
           git config --global user.email "github-actions@example.com"
